@@ -9,6 +9,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');// 热加载需要的 webpack
+
+const autoprefixer = require('autoprefixer'); // 自动补全css3前缀
 // the path(s) that should be cleaned
 let pathsToClean = [
     'dist',
@@ -31,9 +33,29 @@ const config = {
     },
     module: {
         rules: [
+            /*
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            */
+            {
+                test: /\.css$/,
+                use:[
+                    'style-loader',
+                    'css-loader'
+                ]
+
+            },
+            {
+                test: /\.less$/,
+                use:[
+                    'less-loader'
+                ]
+
             },
             {
                 test: /\.js$/,
@@ -50,9 +72,40 @@ const config = {
                 query:{
                     presets:['env', 'react', 'stage-0']
                 }
+            },
+            {
+                test: /\.(png|svg|jpg|gif|ico)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.json$/,
+                use: 'json-loader'
+            },
+            /*
+            {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader?limit=8192&name=[path][name].[ext]'
+            }
+            */
+            {
+                test:/\.(png|jpg|gif|woff|svg|eot|ttf)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit:50000,   //小于50K的 都打包
+                            name:"[hash:8].[name].[ext]",
+                            // publicPath:"img/",  //替换CSS引用的图片路径 可以替换成爱拍云上的路径
+                            // outputPath:"../img/"        //生成之后存放的路径
+                        }
+                    }
+                ]
             }
         ]
     },
+
     plugins: [
         // new CleanWebpackPlugin(['static']),
         new CleanWebpackPlugin(pathsToClean, cleanOptions),

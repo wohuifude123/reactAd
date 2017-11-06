@@ -1,10 +1,19 @@
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Modal } from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import './Navi.css'
-const { Header, Content, Footer, Sider } = Layout;
+import './Initialization.css'
 
-class SiderDemo extends Component {
+import favicon from '../images/favicon.ico';
+
+import CreateScreen from '../routers/CreateScreen/CreateScreen';
+
+const { Header, Content, Footer, Sider } = Layout;
+/**
+ *  作者：Abbott.liu
+ *  日期：2017/11/02
+ *  作用：初始化大屏的菜单
+ */
+class Initialization extends Component {
     state = {
         collapsed: false,
         mode: 'inline',
@@ -17,6 +26,9 @@ class SiderDemo extends Component {
     }
 
     render() {
+
+        const visible = this.props.visible;
+
         return (
             <Layout>
                 <Sider
@@ -50,10 +62,12 @@ class SiderDemo extends Component {
                                 style={{cursor: 'pointer'}}
                             />
                         </span>
-                        <span style={{color:'#fff', paddingLeft:'2%', fontSize:'1.4em'}}>Information Management System</span>
-                        <span style={{color:'#fff', float:'right', paddingRight:'1%'}}>
-                            <img src={logo} className="App-logo" alt="logo" />
+                        <span style={{color:'#fff', paddingLeft:'2%', fontSize:'1.4em'}}>大屏管理系统</span>
+                        <span style={{color:'#fff', float:'right', paddingRight:'2%'}}>
+                            <img src={favicon} className="App-logo" alt="favicon" />
                         </span>
+                        <span style={{color:'#fff', float:'right', fontSize:'1.4em'}}><CreateScreen /></span>
+
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '12px 0' }}>
@@ -65,7 +79,7 @@ class SiderDemo extends Component {
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        Ant Design ©2016 Created by Ant UED
+                        Web Design ©2017 Created by Abbott
                     </Footer>
                 </Layout>
             </Layout>
@@ -73,4 +87,7 @@ class SiderDemo extends Component {
     }
 }
 
-export default SiderDemo;
+export default Initialization;
+
+
+

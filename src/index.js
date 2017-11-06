@@ -134,8 +134,69 @@ import { IndexLink } from 'react-router'
 
 
 import ReactDOM from 'react-dom';
-import SiderDemo from './Navi/Navi'
+import Initialization from './screen/Initialization'
 
-ReactDOM.render(<SiderDemo />, document.getElementById('root'));
+import Welcome from '../components/Welcome/Welcome'
+
+import Root from '../containers/Root'
+
+import TodoList from '../components/TodoList/TodoList.js'
+
+//ReactDOM.render(<Initialization />, document.getElementById('app'));
+
+/*
+require('./styles/index.css');//引入css文件
+render((
+    <TodoList />
+), document.getElementById('app'))
+*/
 
 
+import ModalCustom from '../components/AntDesign/ModalCustom'
+import Clock from '../components/Clock/Clock'
+import ClockRaise from '../components/Clock/ClockRaise'
+
+/*
+//对话框
+ReactDOM.render(<ModalCustom />,
+    document.getElementById('app'))
+
+//定时
+render((
+    <Clock />
+), document.getElementById('app01'))
+
+// 自己点击增加时间
+render((
+    <ClockRaise />
+), document.getElementById('app02'))
+*/
+
+
+/*
+import ButtonSize from '../components/AntDesign/ButtonSize'
+
+ReactDOM.render(<ButtonSize />,
+    document.getElementById('app'))
+*/
+
+/*
+import ReduxProvider from '../redux/ReduxProvider.js'
+
+ReactDOM.render(<ReduxProvider />,
+    document.getElementById('app'))
+*/
+
+
+/*
+import ReduxReddit from '../reddit/ReduxReddit.js'
+
+ReactDOM.render(<ReduxReddit />,
+    document.getElementById('app'))
+*/
+
+
+import Parent01 from '../ajax/Parent01.js'
+
+ReactDOM.render(<Parent01 />,
+    document.getElementById('app'))
