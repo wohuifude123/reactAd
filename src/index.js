@@ -195,8 +195,13 @@ ReactDOM.render(<ReduxReddit />,
     document.getElementById('app'))
 */
 
-
+/*
 import Parent01 from '../ajax/Parent01.js'
 
 ReactDOM.render(<Parent01 />,
     document.getElementById('app'))
+    */
+
+
+import HomeLayout from '../book/HomeLayout'
+ReactDOM.render(<HomeLayout />, document.getElementById('app'));

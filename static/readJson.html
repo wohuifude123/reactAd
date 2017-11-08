@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用原生JS的AJAX读取json格式文件全过程</title>
+</head>
+<body>
+
+<script>
+    function aa(){
+        var test;
+        if(window.XMLHttpRequest){
+            test = new XMLHttpRequest();
+        }else if(window.ActiveXObject){
+            test = new window.ActiveXObject();
+        }else{
+            alert("请升级至最新版本的浏览器");
+        }
+        if(test !=null){
+            test.open("GET","./data/collection.json",true);
+            test.send(null);
+            test.onreadystatechange=function(){
+                //alert('开始GET')
+                if(test.readyState==4&&test.status==200){
+                    var obj = JSON.parse(test.responseText);
+                    //alert(obj);
+                    for(var a in obj){
+                        console.log(a)
+                        console.log('————————————————————')
+                        console.log(obj[a])
+                        console.log('————————————————————')
+                        for(var b in obj[a])
+                        {
+                            console.log(b)
+                            console.log(obj[a][b])
+                        }
+                    }
+
+                }
+            };
+
+        }
+    }
+
+    aa();
+</script>
+
+</body>
+</html>

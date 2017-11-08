@@ -5,8 +5,29 @@ import constantData from './data/SimpleSample.json';
 class Parent01 extends Component {
     constructor(props) {
         super(props)
-
     }
+
+    componentDidMount(){ // 在初始化render后只执行一次
+        //渲染完毕之后，用ajax方法去服务器 取数据
+        //alert('渲染正式开始');
+        $(function($) {
+            var url = 'https://suggest.taobao.com/sug?code=utf-8&q=%E5%8D%AB%E8%A1%A3&callback=cb';
+            $.ajax(url, {
+                data: {
+                    'cityname': '成都',
+                    'date': '2016.12.12'
+                },
+                dataType: 'jsonp',
+                crossDomain: true,
+                success: function (data) {
+                    //alert('开始获取数据');
+                    console.log(data)
+                }
+            });
+        })
+    }
+
+
 
     Ad = () => {
         alert('cac');
@@ -20,6 +41,7 @@ class Parent01 extends Component {
         console.log("type of No.1 Salary"+typeof(constantData.employees[0].salary));
         */
 
+        /*
         var test;
         if(window.XMLHttpRequest){
             test = new XMLHttpRequest();
@@ -32,12 +54,20 @@ class Parent01 extends Component {
             test.open("GET","./data/SimpleSample.json",true);
             test.send(null);
             test.onreadystatechange=function(){
+                //alert('开始GET')
                 if(test.readyState==4&&test.status==200){
                     var obj = JSON.parse(test.responseText);
                     alert(obj);
                 }
             };
 
+        }
+        */
+        for(var a in constantData){
+            console.log('a===');
+            console.log(a);
+            console.log('constantData[a]===');
+            console.log(constantData[a]);
         }
     }
 
